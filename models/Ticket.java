@@ -1,6 +1,6 @@
 package models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Ticket extends BaseModel{
     private int ticketNumber;
