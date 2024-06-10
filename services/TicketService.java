@@ -4,17 +4,22 @@ import exceptions.GateNotFoundException;
 import models.*;
 import repositories.GateRepository;
 import repositories.ParkingLotRepository;
+import repositories.TicketRepository;
 import repositories.VehicleRepository;
 import strategies.spotassignmentstrategy.SpotAssignmentStrategy;
 import strategies.spotassignmentstrategy.SpotAssignmentStrategyFactory;
 
 import java.sql.Date;
 import java.util.Optional;
+import java.util.Random;
 
 public class TicketService {
     private GateRepository gateRepository;
     private VehicleRepository vehicleRepository;
     private ParkingLotRepository parkingLotRepository;
+    private TicketRepository ticketRepository;
+
+    Random random = new Random();
 
     public Ticket issueTicket(
             VehicleType vehicleType,
@@ -69,6 +74,7 @@ public class TicketService {
                 gate, vehicleType
         ));
 
-        return null;
+        ticket.setTicketNumber(random.nextInt(1000));
+        return ticketRepository.saveTicket(ticket);
     }
 }
