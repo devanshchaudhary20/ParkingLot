@@ -19,6 +19,18 @@ public class TicketService {
     private ParkingLotRepository parkingLotRepository;
     private TicketRepository ticketRepository;
 
+    public TicketService(
+            GateRepository gateRepository,
+            VehicleRepository vehicleRepository,
+            ParkingLotRepository parkingLotRepository,
+            TicketRepository ticketRepository
+            ) {
+        this.gateRepository = gateRepository;
+        this.ticketRepository=ticketRepository;
+        this.parkingLotRepository=parkingLotRepository;
+        this.vehicleRepository=vehicleRepository;
+    }
+
     Random random = new Random();
 
     public Ticket issueTicket(
